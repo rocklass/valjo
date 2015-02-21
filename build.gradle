@@ -1,0 +1,31 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+sourceCompatibility = 1.8
+
+group = "org.rocklass"
+
+version = '0.1-SNAPSHOT'
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'VALue Java Object', 'Implementation-Version': version
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile	'junit:junit:4.+'
+    testCompile 'org.apache.commons:commons-lang3:3.3.+'
+}
+
+uploadArchives {
+    repositories {
+       flatDir {
+           dirs 'repository'
+       }
+    }
+}

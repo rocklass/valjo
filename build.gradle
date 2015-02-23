@@ -1,15 +1,20 @@
-apply plugin: 'java'
-apply plugin: 'eclipse'
+plugins {
+  id "net.researchgate.release" version "2.0.2"
+}
+
+apply plugin: "java"
+apply plugin: "eclipse"
+apply plugin: "net.researchgate.release"
 
 sourceCompatibility = 1.8
 
 group = "org.rocklass"
 
-version = '0.1-SNAPSHOT'
+//version = "0.1-SNAPSHOT"
 
 jar {
     manifest {
-        attributes 'Implementation-Title': 'VALue Java Object', 'Implementation-Version': version
+        attributes "Implementation-Title": "VALue Java Object", "Implementation-Version": version
     }
 }
 
@@ -18,14 +23,14 @@ repositories {
 }
 
 dependencies {
-    testCompile	'junit:junit:4.+'
-    testCompile 'org.apache.commons:commons-lang3:3.3.+'
+    testCompile	"junit:junit:$junitVersion"
+    testCompile "org.apache.commons:commons-lang3:$commonsLang3Version"
 }
 
 uploadArchives {
     repositories {
        flatDir {
-           dirs 'repository'
+           dirs "repository"
        }
     }
 }

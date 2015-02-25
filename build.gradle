@@ -1,5 +1,10 @@
+plugins {
+    id "com.jfrog.bintray" version "1.0"
+}
+
 apply plugin: "java"
 apply plugin: "eclipse"
+apply plugin: "maven-publish"
 
 sourceCompatibility = 1.8
 
@@ -7,8 +12,17 @@ group = "org.rocklass"
 
 jar {
     manifest {
-        attributes "Implementation-Title": "VALue Java Object", "Implementation-Version": version
+        attributes "Implementation-Title": title, "Implementation-Version": version
     }
+}
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = "sources"
+    from sourceSets.main.allSource
+}
+
+artifacts {
+    archives sourcesJar
 }
 
 repositories {
@@ -20,10 +34,43 @@ dependencies {
     testCompile "org.apache.commons:commons-lang3:$commonsLang3Version"
 }
 
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+            artifact sourcesJar {
+                classifier "sources"
+            }
+        }
+    }
+}
+
 uploadArchives {
     repositories {
        flatDir {
            dirs "repository"
        }
+    }
+}
+
+bintray {
+    user = bintrayUser // from GRADLE_USER_HOME/gradle.properties
+    key = bintrayKey // from GRADLE_USER_HOME/gradle.properties
+
+    publications = ["mavenJava"]
+    dryRun = false
+    publish = true
+    pkg {
+        repo = "maven"
+        name = project.name
+        desc = "valjo (VALue Java Object)"
+        websiteUrl = "https://github.com/rocklass/valjo"
+        issueTrackerUrl = "https://github.com/rocklass/valjo/issues"
+        vcsUrl = "https://github.com/rocklass/valjo.git"
+        licenses = ["GPL-3.0"]
+        publicDownloadNumbers = true
+        version {
+                name = version
+        }
     }
 }

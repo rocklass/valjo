@@ -70,7 +70,7 @@ bintray {
         licenses = ["GPL-3.0"]
         publicDownloadNumbers = true
         version {
-                name = version
+                name = project.version
         }
     }
 }

@@ -39,7 +39,7 @@ publishing {
     publications {
         mavenJava(MavenPublication) {
             from components.java
-            version project.version
+            version version
             artifact sourcesJar {
                 classifier "sources"
             }

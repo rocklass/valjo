@@ -42,8 +42,16 @@ dependencies {
 
 publishing {
     publications {
-        mavenJava(MavenPublication) {
+        /*mavenJava(MavenPublication) {
             artifact componentJar
+            artifact sourcesJar {
+                classifier "sources"
+            }
+        }*/
+        mavenComponentJar(MavenPublication) {
+            artifact componentJar
+        }
+        mavenSourcesJar(MavenPublication) {
             artifact sourcesJar {
                 classifier "sources"
             }
@@ -69,7 +77,7 @@ bintray {
     user = bintrayUser // from GRADLE_USER_HOME/gradle.properties
     key = bintrayKey // from GRADLE_USER_HOME/gradle.properties
 
-    publications = ["mavenJava"]
+    publications = ["mavenComponentJar", "mavenSourcesJar"]
     dryRun = false
     publish = true
     pkg {

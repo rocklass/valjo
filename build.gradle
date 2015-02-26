@@ -1,4 +1,5 @@
 plugins {
+	id "net.researchgate.release" version "2.0.2"
     id "com.jfrog.bintray" version "1.0"
 }
 
@@ -53,6 +54,8 @@ uploadArchives {
     }
 }
 
+createReleaseTag.dependsOn uploadArchives
+
 bintray {
     user = bintrayUser // from GRADLE_USER_HOME/gradle.properties
     key = bintrayKey // from GRADLE_USER_HOME/gradle.properties
@@ -74,3 +77,5 @@ bintray {
         }
     }
 }
+
+bintrayUpload.dependsOn createReleaseTag

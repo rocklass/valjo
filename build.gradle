@@ -37,7 +37,8 @@ dependencies {
 
 publishing {
     publications {
-        mavenJava(MavenPublication) {
+        mavenJava(MavenPublication publication) {
+        	publication.setVersion(project.version)
             from components.java
             
             artifact sourcesJar {

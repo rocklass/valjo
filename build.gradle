@@ -81,3 +81,5 @@ bintray {
         }
     }
 }
+
+bintrayUpload.dependsOn build, uploadArchives

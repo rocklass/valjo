@@ -54,7 +54,7 @@ uploadArchives {
     }
 }
 
-createReleaseTag.dependsOn uploadArchives, bintrayUpload
+//createReleaseTag.dependsOn uploadArchives, bintrayUpload
 
 release {
 	failOnPublishNeeded = false

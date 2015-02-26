@@ -57,7 +57,7 @@ uploadArchives {
 createReleaseTag.dependsOn uploadArchives
 
 release {
-  failOnUpdateNeeded = false
+	failOnPublishNeeded = false
 }
 
 bintray {

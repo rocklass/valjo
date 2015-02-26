@@ -39,6 +39,7 @@ publishing {
     publications {
         mavenJava(MavenPublication) {
             from components.java
+            version "0.2"
             artifact sourcesJar {
                 classifier "sources"
             }
@@ -81,5 +82,3 @@ bintray {
         }
     }
 }
-
-bintrayUpload.dependsOn build, uploadArchives

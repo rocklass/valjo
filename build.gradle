@@ -59,7 +59,7 @@ release {
 	failOnPublishNeeded = false
 }
 
-createReleaseTag.dependsOn bintrayUpload
+createReleaseTag.dependsOn uploadArchives, bintrayUpload
 
 bintray {
     user = bintrayUser // from GRADLE_USER_HOME/gradle.properties
@@ -83,4 +83,4 @@ bintray {
     }
 }
 
-bintrayUpload.dependsOn build, uploadArchives
+//bintrayUpload.dependsOn build, uploadArchives

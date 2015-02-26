@@ -83,4 +83,4 @@ bintray {
     }
 }
 
-//bintrayUpload.dependsOn build, uploadArchives
+bintrayUpload.dependsOn build, uploadArchives

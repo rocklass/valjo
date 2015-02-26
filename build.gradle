@@ -54,8 +54,6 @@ uploadArchives {
     }
 }
 
-createReleaseTag.dependsOn uploadArchives, bintrayUpload
-
 release {
 	failOnPublishNeeded = false
 }
@@ -81,3 +79,5 @@ bintray {
         }
     }
 }
+
+bintrayUpload.dependsOn createReleaseTag

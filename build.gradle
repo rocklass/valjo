@@ -17,6 +17,11 @@ jar {
     }
 }
 
+task componentJar(type: Jar) {
+	version project.version
+    from components.java
+}
+
 task sourcesJar(type: Jar, dependsOn: classes) {
     classifier = "sources"
     from sourceSets.main.allSource
@@ -38,8 +43,7 @@ dependencies {
 publishing {
     publications {
         mavenJava(MavenPublication) {
-            from components.java
-            version "0.2"
+            artifact componentJar
             artifact sourcesJar {
                 classifier "sources"
             }

@@ -84,9 +84,9 @@ bintray {
         vcsUrl = "https://github.com/rocklass/valjo.git"
         licenses = ["GPL-3.0"]
         publicDownloadNumbers = true
-        version {
+        /*version {
                 name = project.version
-        }
+        }*/
     }
 }
 

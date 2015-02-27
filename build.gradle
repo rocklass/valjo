@@ -37,8 +37,7 @@ dependencies {
 
 publishing {
     publications {
-        mavenJava(MavenPublication publication) {
-        	publication.setVersion(project.version)
+        mavenJava(MavenPublication) {
             from components.java
             
             artifact sourcesJar {
@@ -46,6 +45,13 @@ publishing {
             }
         }
     }
+}
+
+confirmReleaseVersion << {
+    publishing.publications.mavenJava.version = project.version
+    jar.version = project.version
+    sourcesJar.version = project.version
+    publishing.publications.mavenJava.setArtifacts([jar, sourcesJar])
 }
 
 uploadArchives {
@@ -78,8 +84,8 @@ bintray {
         vcsUrl = "https://github.com/rocklass/valjo.git"
         licenses = ["GPL-3.0"]
         publicDownloadNumbers = true
-        /*version {
+        version {
                 name = project.version
-        }*/
+        }
     }
 }

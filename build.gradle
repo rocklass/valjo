@@ -64,6 +64,7 @@ uploadArchives {
 
 release {
 	failOnPublishNeeded = false
+	tagPrefix = project.name + "-"
 }
 
 bintray {

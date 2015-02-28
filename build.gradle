@@ -52,6 +52,8 @@ confirmReleaseVersion << {
     jar.version = project.version
     sourcesJar.version = project.version
     publishing.publications.mavenJava.setArtifacts([jar, sourcesJar])
+    bintrayUpload.versionName = project.version
+    bintrayUpload.versionVcsTag = project.version
 }
 
 uploadArchives {
@@ -66,8 +68,6 @@ release {
 	failOnPublishNeeded = false
 	tagPrefix = project.name
 }
-
-createReleaseTag.dependsOn bintrayUpload
 
 bintray {
     user = bintrayUser // from GRADLE_USER_HOME/gradle.properties
@@ -91,3 +91,5 @@ bintray {
         }
     }
 }
+
+createReleaseTag.dependsOn bintrayUpload

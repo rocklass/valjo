@@ -66,8 +66,6 @@ release {
 	failOnPublishNeeded = false
 }
 
-createReleaseTag.dependsOn bintrayUpload
-
 bintray {
     user = bintrayUser // from GRADLE_USER_HOME/gradle.properties
     key = bintrayKey // from GRADLE_USER_HOME/gradle.properties
@@ -90,5 +88,3 @@ bintray {
         }
     }
 }
-
-bintrayUpload.dependsOn uploadArchives

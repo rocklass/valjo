@@ -64,8 +64,10 @@ uploadArchives {
 
 release {
 	failOnPublishNeeded = false
-	tagPrefix = project.name + "-"
+	tagPrefix = project.name
 }
+
+createReleaseTag.dependsOn bintrayUpload
 
 bintray {
     user = bintrayUser // from GRADLE_USER_HOME/gradle.properties

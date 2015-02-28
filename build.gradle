@@ -1,6 +1,6 @@
 plugins {
 	id "net.researchgate.release" version "2.0.2"
-    id "com.jfrog.bintray" version "1.0"
+	id "com.jfrog.bintray" version "1.0"
 }
 
 apply plugin: "java"
@@ -12,8 +12,11 @@ sourceCompatibility = 1.8
 group = "org.rocklass"
 
 jar {
-    manifest {
-        attributes "Implementation-Title": title, "Implementation-Version": version
+	doFirst {
+	    manifest {
+	        attributes 	"Implementation-Title": title,
+	        			"Implementation-Version": version
+	    }
     }
 }
 
@@ -47,6 +50,7 @@ publishing {
     }
 }
 
+// update version during release (no snapshot)
 confirmReleaseVersion << {
     publishing.publications.mavenJava.version = project.version
     jar.version = project.version
@@ -68,6 +72,8 @@ release {
 	failOnPublishNeeded = false
 	tagPrefix = project.name
 }
+
+createReleaseTag.dependsOn bintrayUpload
 
 bintray {
     user = bintrayUser // from GRADLE_USER_HOME/gradle.properties
@@ -91,5 +97,3 @@ bintray {
         }
     }
 }
-
-createReleaseTag.dependsOn bintrayUpload

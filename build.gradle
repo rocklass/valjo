@@ -41,6 +41,8 @@ dependencies {
     testCompile "net.sourceforge.cobertura:cobertura:$coberturaVersion"
 }
 
+cobertura.coverageFormats = ['html', 'xml']
+
 publishing {
     publications {
         mavenJava(MavenPublication) {

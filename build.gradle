@@ -1,4 +1,6 @@
 plugins {
+	id "net.saliman.cobertura" version "2.2.7"
+	id "com.github.kt3k.coveralls" version "2.3.1"
 	id "net.researchgate.release" version "2.0.2"
 	id "com.jfrog.bintray" version "1.0"
 }
@@ -36,6 +38,7 @@ repositories {
 dependencies {
     testCompile	"junit:junit:$junitVersion"
     testCompile "org.apache.commons:commons-lang3:$commonsLang3Version"
+    testCompile "net.sourceforge.cobertura:cobertura:$coberturaVersion"
 }
 
 publishing {

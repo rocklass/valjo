@@ -1,5 +1,4 @@
 plugins {
-	id "net.saliman.cobertura" version "2.2.7"
 	id "com.github.kt3k.coveralls" version "2.3.1"
 	id "net.researchgate.release" version "2.0.2"
 	id "com.jfrog.bintray" version "1.0"
@@ -7,6 +6,7 @@ plugins {
 
 apply plugin: "java"
 apply plugin: "eclipse"
+apply plugin: "jacoco"
 apply plugin: "maven-publish"
 
 sourceCompatibility = 1.8
@@ -38,10 +38,13 @@ repositories {
 dependencies {
     testCompile	"junit:junit:$junitVersion"
     testCompile "org.apache.commons:commons-lang3:$commonsLang3Version"
-    testCompile "net.sourceforge.cobertura:cobertura:$coberturaVersion"
 }
 
-cobertura.coverageFormats = ['html', 'xml']
+jacocoTestReport {
+    reports {
+        xml.enabled true
+    }
+}
 
 publishing {
     publications {

@@ -41,7 +41,7 @@ public abstract class TypeValueObject<T> implements ValueObject<T> {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		TypeValueObject other = (TypeValueObject) obj;
+		TypeValueObject<?> other = (TypeValueObject<?>) obj;
 		if (value == null) {
 			if (other.value != null)
 				return false;
@@ -52,6 +52,6 @@ public abstract class TypeValueObject<T> implements ValueObject<T> {
 
 	@Override
 	public final String toString() {
-		return "Type [value=" + value + "]";
+		return value.toString();
 	}
 }
